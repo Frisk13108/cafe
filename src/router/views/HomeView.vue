@@ -1,19 +1,7 @@
 <script setup>
 import { cafes } from '../cafes';
 
-
-let maiorNota = 0;
-function maiorMedia () {
-    for (let index = 1; index <= cafes.length; index++) {
-        const cafeAtual = cafes.find(cafe => cafe.id === index);
-        
-        if(cafeAtual.media > maiorNota) {
-            maiorNota = cafeAtual.media;
-        }
-
-    }
-
-}
+import MaiorMedia from '../MaiorMedia.vue';
 </script>
 
 <template>
@@ -45,7 +33,7 @@ function maiorMedia () {
                     Café com Maior Nota
                 </h2>
                 <h1>
-                    {{  }}
+                    {{ maiorNota }}
                 </h1>
             </div>
         </div>
