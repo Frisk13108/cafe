@@ -1,8 +1,9 @@
 import { createRouter, createWebHistory } from 'vue-router'
 
-import HomeView from '@/HomeView.vue'
-import LeaderboardTable from '@/LeaderboardTable.vue'
-import RatingForm from '@/RatingForm.vue'
+import HomeView from './views/HomeView.vue'
+import AvaliacaoView from './views/AvaliacaoView.vue'
+import RankingView from './views/RankingView.vue'
+
 
 
 
@@ -17,12 +18,12 @@ const router = createRouter({
     {
       path: '/avaliacoes',
       name: 'avaliacoes',
-      component: RatingForm
+      component: AvaliacaoView,
     },
     {
       path: '/ranking',
       name: 'ranking',
-      component: LeaderboardTable
+      component: RankingView,
     }
   ],
 })
