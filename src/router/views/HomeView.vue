@@ -1,7 +1,12 @@
 <script setup>
 import { cafes } from '../cafes';
+import { cafesOrdenados } from '../cafes';
 
-import MaiorMedia from '../MaiorMedia.vue';
+const maiorMedia = cafesOrdenados[0].media;
+const nomeDaMaiorMedia = cafesOrdenados[0].nome;
+const produtorMaiorMedia = cafesOrdenados[0].produtor;
+
+
 </script>
 
 <template>
@@ -33,8 +38,49 @@ import MaiorMedia from '../MaiorMedia.vue';
                     Café com Maior Nota
                 </h2>
                 <h1>
-                    {{ maiorNota }}
+                    {{ maiorMedia }}
                 </h1>
+                <h2>
+                    {{ nomeDaMaiorMedia }}
+                </h2>
+                <p>
+                    {{ produtorMaiorMedia }}
+                </p>
+            </div>
+
+            <div>
+                <h2>
+                    Última Avaliação
+                </h2>
+
+                <h1>
+                    8.7
+                </h1>
+
+                <h2>
+                    Arara
+                </h2>
+
+                <p>
+                    25/05/2024 14:32
+                </p>
+            </div>
+
+            <a href="/avaliacoes">
+                <button>
+                    Ver avaliações
+                </button>
+            </a>
+            
+
+            <div>
+                <h2>
+                    Participe e faça a diferença!
+                </h2>
+
+                <p>
+                    Cada avaliação ajuda a reconhecer o trabalho dos produtores e a valorizar o café de qualidade.
+                </p>
             </div>
         </div>
     </main>

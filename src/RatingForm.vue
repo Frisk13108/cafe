@@ -1,7 +1,29 @@
 <script setup>
 import { cafes } from './router/cafes';
+import { computed, ref } from 'vue';
 
 defineProps(['id', 'nome', 'produtor', 'media']);
+
+const aroma = ref(0);
+const sabor = ref(0);
+const acidez = ref(0);
+const corpo = ref(0);
+const finalizacao = ref(0);
+
+const mediaSCA = computed(() => {
+  const notas = [aroma.value, sabor.value, acidez.value, corpo.value, finalizacao.value];
+  const soma = notas.reduce((total, valor) => total + Number(valor || 0), 0);
+  return (soma / notas.length).toFixed(1);
+});
+
+const formulario = ref(null);
+
+function enviarform() {
+    if(formulario.value) {
+        formulario.value.reset()
+    }
+
+}
 
 </script>
 
@@ -26,69 +48,89 @@ defineProps(['id', 'nome', 'produtor', 'media']);
     </ul>
 
     <div class="avaliacao">
-
-        <div class="nome">
-            <h1>
-                Nome do Café
-            </h1>
-            
-            <input type="text" class="nomeCafe">
-        </div>
-
-        <div class="produtor">
-            <h1>
-                Produtor
-            </h1>
-            
-            <input type="text" class="produtorCafe">
-        </div>
-
-        <div class="notas">
-            <h1>
-                Notas SCA (0 a 10)
-            </h1>
-
-            <ul class="aroma">
-                <li>
-                    <p>
-                        Aroma
-                    </p>
-                    <input type="number" class="notaAroma" min="1" max="10">    
-                </li>
+        <h1>
+            Nova avaliação
+        </h1>
+        <form ref="formulario">
+            <div class="nome">
+                <h1>
+                    Nome do Café
+                </h1>
                 
-                <li>
-                    <p>
-                        Sabor
-                    </p>
-                    <input type="number" class="notaSabor" min="1" max="10">  
-                </li>
+                <input type="text" class="nomeCafe">
+            </div>
 
-                <li>
-                    <p>
-                        Acidez
-                    </p>
-                    <input type="number" class="notaAcidez" min="1" max="10">  
-                </li>
+            <div class="produtor">
+                <h1>
+                    Produtor
+                </h1>
+                
+                <input type="text" class="produtorCafe">
+            </div>
 
-                <li>
-                    <p>
-                        Corpo
-                    </p>
-                    <input type="number" class="notaCorpo" min="1" max="10">  
-                </li>
+            <div class="notas">
+                <h1>
+                    Notas SCA (0 a 10)
+                </h1>
 
-                <li>
-                    <p>
-                        Finalização
-                    </p>
-                    <input type="number" class="notaFinalizacao" min="1" max="10">  
-                </li>
-            </ul>
-        </div>
+                <ul class="notas">
+                    <li>
+                        <p>
+                            Aroma
+                        </p>
+                        <input v-model.number="aroma" type="number" id="notaAroma" min="1" max="10">    
+                    </li>
+                    
+                    <li>
+                        <p>
+                            Sabor
+                        </p>
+                        <input v-model.number="sabor" type="number" id="notaSabor" min="1" max="10">  
+                    </li>
 
-        <div class="observações">
-            <textarea name="observacao" id="sla"></textarea>
-        </div>
+                    <li>
+                        <p>
+                            Acidez
+                        </p>
+                        <input v-model.number="acidez" type="number" id="notaAcidez" min="1" max="10">  
+                    </li>
+
+                    <li>
+                        <p>
+                            Corpo
+                        </p>
+                        <input v-model.number="corpo" type="number" id="notaCorpo" min="1" max="10">  
+                    </li>
+
+                    <li>
+                        <p>
+                            Finalização
+                        </p>
+                        <input v-model.number="finalizacao" type="number" id="notaFinalizacao" min="1" max="10">  
+                    </li>
+                </ul>
+            </div>
+
+            <div class="observações">
+                <textarea name="observacao" id="sla"></textarea>
+            </div>
+
+            <div class="mediaSCA">
+                <h1>
+                    {{ mediaSCA }}
+                </h1>
+            </div>
+
+            <button v-on:click="enviarform()">
+                Limpar
+            </button>
+            <button v-on:click="enviarform()">
+                Salvar avaliacao
+            </button>
+        </form>
+            
+
+        
     </div>
 
 </template>

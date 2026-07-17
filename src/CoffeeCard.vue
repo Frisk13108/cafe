@@ -1,5 +1,5 @@
 <script setup>
-    import { cafes } from './router/cafes';
+    import { cafesOrdenados } from './router/cafes';
 
     defineProps(['nome', 'produtor', 'media', 'id']);
 </script>
@@ -8,14 +8,18 @@
     <div>
         <img src="" alt="">
         <h1>
-            {{ cafes.nome }}
+            {{ cafesOrdenados.nome }}
         </h1>
         <p>
-            {{ cafes.produtor }}
+            {{ cafesOrdenados.produtor }}
         </p>
         <h2>
-            {{ cafes.media }}
+            {{ cafesOrdenados.media }}
         </h2>
+
+        <button>
+            Ver detalhes
+        </button>
     </div>
 </template>
 

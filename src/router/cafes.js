@@ -30,3 +30,5 @@ export const cafes = [
         media: 9.3,
     },
 ]
+
+export const cafesOrdenados = cafes.sort((a, b) => b.media - a.media);
