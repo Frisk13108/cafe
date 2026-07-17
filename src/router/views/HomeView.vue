@@ -11,7 +11,7 @@ const produtorMaiorMedia = cafesOrdenados[0].produtor;
 
 <template>
     <main>
-        <h1>
+        <h1 class="tituloMaior">
             Campeonato de Avaliação de Qualidade de Café
         </h1>
 
@@ -37,7 +37,7 @@ const produtorMaiorMedia = cafesOrdenados[0].produtor;
                 <h2>
                     Café com Maior Nota
                 </h2>
-                <h1>
+                <h1 class="media">
                     {{ maiorMedia }}
                 </h1>
                 <h2>
@@ -53,7 +53,7 @@ const produtorMaiorMedia = cafesOrdenados[0].produtor;
                     Última Avaliação
                 </h2>
 
-                <h1>
+                <h1 class="ultima">
                     8.7
                 </h1>
 
@@ -87,5 +87,10 @@ const produtorMaiorMedia = cafesOrdenados[0].produtor;
 </template>
 
 <style scoped>
+
+    h1.tituloMaior {
+        font-width: bold;
+        font-size: 2rem;
+    }
 
 </style>
